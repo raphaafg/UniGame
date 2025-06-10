@@ -9,7 +9,7 @@ class Game:
     def __init__(self):
         #EU COLOCO PYG.INIT E SETUP DA JANELA DENTRO DO CONSTRUTOR DA CLASSE, POIS QUERO QUE SEJA FEITO APENAS UMA VEZ E NÃO REESCRITO A CADA LOOP DO JOGO
         pyg.init() # Initialize the pygame library
-        self.window = pyg.display.set_mode (size=(800,600)) # Create a window with a size of 800x600 pixels -> size deve ser criada em tupla
+        self.window = pyg.display.set_mode (size=(800,500)) # Create a window with a size of 800x600 pixels -> size deve ser criada em tupla
 
     def run(self, ):
        
