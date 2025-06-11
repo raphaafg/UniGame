@@ -9,7 +9,7 @@ from pygame import Rect
 from pygame import Surface 
 
 from code.const import WIN_WIDTH, WIN_HEIGHT
-from code.const import COLOR_PURPLE, COLOR_BLUESKY, COLOR_YELLOW 
+from code.const import COLOR_PURPLE, COLOR_BLUESKY, COLOR_BLUESPACE 
 from code.const import FONT_TITLE_SIZE, FONT_OPTION_SIZE
 from code.const import MENU_OPTION
 
@@ -30,6 +30,7 @@ class Menu:
 
 
     def run(self, ):
+        menu_option = 3
         pygame.mixer_music.load('./asset/Sound_menu.wav') # Load the background music for the menu
         pygame.mixer_music.play(loops=-1) # Play the background music in a loop (-1 means loop indefinitely)
 
@@ -39,9 +40,14 @@ class Menu:
             self.menu_text(FONT_TITLE_SIZE, "SHOOTER", COLOR_PURPLE, text_center_pos=((WIN_WIDTH/2), 200) )
             self.menu_text(FONT_TITLE_SIZE, "-"*3, COLOR_PURPLE, text_center_pos=(((WIN_WIDTH/2)-16), 215) )
 
+            self.menu_text(10, "Created by Raphael Fagundes", COLOR_BLUESPACE, text_center_pos=(74, 485) )
+
             for i in range(len(MENU_OPTION)):
-                self.menu_text(FONT_OPTION_SIZE, MENU_OPTION[i], COLOR_BLUESKY, text_center_pos=((WIN_WIDTH-140), 340 + (i * 30)))
-                 # Draw each menu option with a vertical offset                                                       ^^^^^^^^       
+                if i== menu_option: #if the current option is the selected one
+                    self.menu_text(FONT_OPTION_SIZE, MENU_OPTION[i], COLOR_BLUESPACE, text_center_pos=((WIN_WIDTH-140), 340 + (i * 30)))
+                else:
+                    self.menu_text(FONT_OPTION_SIZE, MENU_OPTION[i], COLOR_BLUESKY, text_center_pos=((WIN_WIDTH-140), 340 + (i * 30)))
+                    # Draw each menu option with a vertical offset                                                       ^^^^^^^^       
            
             pygame.display.flip()  #update the display to show the image
             self.clock.tick(60) # Limit the frame rate to 60 FPS

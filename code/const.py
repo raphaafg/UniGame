@@ -7,7 +7,7 @@
 #C
 COLOR_PURPLE = (187, 50, 214)  # RGB color for purple
 COLOR_BLUESKY = (167, 236, 255)  # RGB color for sky blue
-COLOR_YELLOW = (255, 248, 72)  # RGB color for yellow
+COLOR_BLUESPACE = (80, 50, 255)  # RGB color for yellow
 
 #F
 FONT_TITLE_SIZE = 60  # Font size for the menu text
