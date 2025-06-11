@@ -6,9 +6,19 @@
 
 #C
 COLOR_PURPLE = (187, 50, 214)  # RGB color for purple
+COLOR_BLUESKY = (167, 236, 255)  # RGB color for sky blue
+COLOR_YELLOW = (255, 248, 72)  # RGB color for yellow
 
-#
-FONT_MENU_SIZE = 60  # Font size for the menu text
+#F
+FONT_TITLE_SIZE = 60  # Font size for the menu text
+FONT_OPTION_SIZE = 18  # Font size for the menu options
+
+#M
+MENU_OPTION = ( 'NEW GAME - 1P > ARCADE',
+                'NEW GAME - 2P > COOPERATIVE',
+                'NEW GAME - 2P > COMPETITIVE',
+                'SCORE',
+                'EXIT')
 
 #W
 WIN_WIDTH = 800  # Width of the game window

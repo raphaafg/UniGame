@@ -4,17 +4,14 @@
 # -*- coding: utf-8 -*-
 import pygame
 
-
 from pygame.font import Font # Import the Font class from the pygame.font module
-
-
-#from font.font import Font # Import the Font class from the font module
 from pygame import Rect
-from pygame import Surface # Import the Rect and Surface classes from the pygame module
-from code.const import WIN_WIDTH # Import the constant WIN_WIDTH from the const module
-from code.const import WIN_HEIGHT # Import the constant WIN_HEIGHT from the const module
-from code.const import COLOR_PURPLE # Import the constant COLOR_PURPLE from the const module
-from code.const import FONT_MENU_SIZE # Import the constant FONT_MENU_SIZE from the const module
+from pygame import Surface 
+
+from code.const import WIN_WIDTH, WIN_HEIGHT
+from code.const import COLOR_PURPLE, COLOR_BLUESKY, COLOR_YELLOW 
+from code.const import FONT_TITLE_SIZE, FONT_OPTION_SIZE
+from code.const import MENU_OPTION
 
 class Menu:
     def __init__(self, window):
@@ -38,12 +35,18 @@ class Menu:
 
         while True:
             self.window.blit(source=self.surf, dest=self.rect)  #draw the image on the window - source is the image, dest is the rectangle where the image will be drawn
-            self.menu_text(FONT_MENU_SIZE, "SPACE", COLOR_PURPLE, text_center_pos=((WIN_WIDTH/2), 100) )
-            self.menu_text(FONT_MENU_SIZE, "SHOOTER", COLOR_PURPLE, text_center_pos=((WIN_WIDTH/2), 180) )
-            self.menu_text(FONT_MENU_SIZE, "-"*3, COLOR_PURPLE, text_center_pos=(((WIN_WIDTH/2)-16), 195) )
+            self.menu_text(FONT_TITLE_SIZE, "SPACE", COLOR_PURPLE, text_center_pos=((WIN_WIDTH/2), 120) )
+            self.menu_text(FONT_TITLE_SIZE, "SHOOTER", COLOR_PURPLE, text_center_pos=((WIN_WIDTH/2), 200) )
+            self.menu_text(FONT_TITLE_SIZE, "-"*3, COLOR_PURPLE, text_center_pos=(((WIN_WIDTH/2)-16), 215) )
+
+            for i in range(len(MENU_OPTION)):
+                self.menu_text(FONT_OPTION_SIZE, MENU_OPTION[i], COLOR_BLUESKY, text_center_pos=((WIN_WIDTH-140), 340 + (i * 30)))
+                 # Draw each menu option with a vertical offset                                                       ^^^^^^^^       
            
             pygame.display.flip()  #update the display to show the image
             self.clock.tick(60) # Limit the frame rate to 60 FPS
+
+
 
             #Check for all events
             for event in pygame.event.get():
