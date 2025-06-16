@@ -30,11 +30,12 @@ class Menu:
 
 
     def run(self, ):
-        menu_option = 3
+        menu_option = 0
         pygame.mixer_music.load('./asset/Sound_menu.wav') # Load the background music for the menu
         pygame.mixer_music.play(loops=-1) # Play the background music in a loop (-1 means loop indefinitely)
-
         while True:
+
+            ##--------------DRAW---IMAGES--------------##
             self.window.blit(source=self.surf, dest=self.rect)  #draw the image on the window - source is the image, dest is the rectangle where the image will be drawn
             self.menu_text(FONT_TITLE_SIZE, "SPACE", COLOR_PURPLE, text_center_pos=((WIN_WIDTH/2), 120) )
             self.menu_text(FONT_TITLE_SIZE, "SHOOTER", COLOR_PURPLE, text_center_pos=((WIN_WIDTH/2), 200) )
@@ -48,18 +49,36 @@ class Menu:
                 else:
                     self.menu_text(FONT_OPTION_SIZE, MENU_OPTION[i], COLOR_BLUESKY, text_center_pos=((WIN_WIDTH-140), 340 + (i * 30)))
                     # Draw each menu option with a vertical offset                                                       ^^^^^^^^       
-           
+            
             pygame.display.flip()  #update the display to show the image
             self.clock.tick(60) # Limit the frame rate to 60 FPS
+           
 
 
-
-            #Check for all events
+            ##--------------Check for all events--------------##
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit() #if the event is a quit event, exit the loop == close the window
                     quit() #End PYGAME
 
+                if event.type == pygame.KEYDOWN: #check event for pressing a key
+                    if event.key == pygame.K_DOWN: #if the key pressed is the down arrow key
+                        if menu_option < len(MENU_OPTION) - 1: #it is necessary to check the length to no surpass the number of options
+                            menu_option += 1 #add 1 to the menu option (counter to navigate through the menu)
+                        else:
+                            menu_option = 0 #if the menu option is greater than the number of options, reset it to 0
+                    if event.key == pygame.K_UP:#same but for the up arrow key
+                        if menu_option > 0:
+                            menu_option -= 1 
+                        else:
+                            menu_option = len(MENU_OPTION) - 1
+                    if event.key == pygame.K_RETURN: #event for pressing the enter key
+                        return MENU_OPTION[menu_option] #return the selected option
+
+
+
+
+            
 
 
 
