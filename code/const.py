@@ -9,6 +9,14 @@ COLOR_PURPLE = (187, 50, 214)  # RGB color for purple
 COLOR_BLUESKY = (167, 236, 255)  # RGB color for sky blue
 COLOR_BLUESPACE = (80, 50, 255)  # RGB color for yellow
 
+#E
+ENTITY_SPEED = {
+    'lvl1_0':0,
+    'lvl1_1':0,
+    'lvl1_2':4,
+    'lvl1_3':5,
+}
+
 #F
 FONT_TITLE_SIZE = 60  # Font size for the menu text
 FONT_OPTION_SIZE = 18  # Font size for the menu options
