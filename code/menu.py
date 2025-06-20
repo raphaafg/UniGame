@@ -45,9 +45,9 @@ class Menu:
 
             for i in range(len(MENU_OPTION)):
                 if i== menu_option: #if the current option is the selected one
-                    self.menu_text(FONT_OPTION_SIZE, MENU_OPTION[i], COLOR_BLUESPACE, text_center_pos=((WIN_WIDTH-140), 340 + (i * 30)))
+                    self.menu_text(FONT_OPTION_SIZE, MENU_OPTION[i], COLOR_BLUESPACE, text_center_pos=((WIN_WIDTH-140), 320 + (i * 30)))
                 else:
-                    self.menu_text(FONT_OPTION_SIZE, MENU_OPTION[i], COLOR_BLUESKY, text_center_pos=((WIN_WIDTH-140), 340 + (i * 30)))
+                    self.menu_text(FONT_OPTION_SIZE, MENU_OPTION[i], COLOR_BLUESKY, text_center_pos=((WIN_WIDTH-140), 320 + (i * 30)))
                     # Draw each menu option with a vertical offset                                                       ^^^^^^^^       
             
             pygame.display.flip()  #update the display to show the image

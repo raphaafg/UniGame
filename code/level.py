@@ -1,9 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import random
 import sys
 import pygame
-from code.const import COLOR_BLUESKY, WIN_HEIGHT
+from code.const import COLOR_BLUESKY, ENEMY_SPAWN, MENU_OPTION, SPAWN_TIME, WIN_HEIGHT
 from code.entity import Entity
 from code.entityFactory import EntityFactory
 
@@ -16,6 +17,10 @@ class Level:
         self.game_mode = game_mode #game mode selected in the menu (menu_option)
         self.entity_list : list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('lvl1'))  # Get the entities for level 1 from the factory
+        self.entity_list.append(EntityFactory.get_entity('Player1'))
+        if self.game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
+            self.entity_list.append(EntityFactory.get_entity('Player2'))
+        pygame.time.set_timer(ENEMY_SPAWN, SPAWN_TIME)  # Set a timer to spawn enemies every 2 seconds
 
     def run(self, ):
         pygame.mixer_music.load('./asset/Sound_lvl1.wav')  # Load the background music for level 1
@@ -33,6 +38,10 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()  # Exit the game if the window is closed
+                ##---------SPAWN OF ENEMIES---------##
+                if event.type == ENEMY_SPAWN:
+                    choice = random.choice(['Enemy1', 'Enemy2'])  # Randomly choose an enemy type to spawn
+                    self.entity_list.append(EntityFactory.get_entity(choice))  #add a random enemy to the entity list
 
             #printed text on the screen
             

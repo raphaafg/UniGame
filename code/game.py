@@ -26,7 +26,8 @@ class Game:
             if menu_return in [MENU_OPTION[0], MENU_OPTION[1], MENU_OPTION[2]]: #if player selects to play 1p. 2p coop or 2p vs, starts the level 1
                 level = Level(self.window, 'Level 1', menu_return) #create a new Level object with the window and level name
                 level_return = level.run()
-            elif menu_return == MENU_OPTION[4]:
+                        
+            elif menu_return == MENU_OPTION[5]:
                 pygame.quit() #quit the game closing the window
                 quit()
             else:
