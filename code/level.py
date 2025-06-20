@@ -1,13 +1,16 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import sys
 import pygame
+from code.const import COLOR_BLUESKY, WIN_HEIGHT
 from code.entity import Entity
 from code.entityFactory import EntityFactory
 
 
 class Level:
     def __init__(self, window, name, game_mode):
+        self.timeout = 25000 #ms = 25seconds
         self.window = window
         self.name = name
         self.game_mode = game_mode #game mode selected in the menu (menu_option)
@@ -15,9 +18,32 @@ class Level:
         self.entity_list.extend(EntityFactory.get_entity('lvl1'))  # Get the entities for level 1 from the factory
 
     def run(self, ):
+        pygame.mixer_music.load('./asset/Sound_lvl1.wav')  # Load the background music for level 1
+        pygame.mixer_music.play(loops=-1)
+        clock = pygame.time.Clock()  # Create a clock to control FPS
+           
+
         while True:
+            clock.tick(60)
+            self.window.fill((0,0,0)) #reset screen
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)  # Draw each entity on the window
                 ent.move()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()  # Exit the game if the window is closed
+
+            #printed text on the screen
+            
+            self.level_text( 14, f'{self.name} - Timeout: {self.timeout / 1000:.0f}s', COLOR_BLUESKY,(10, 5)) #show the level name and timeout
+            self.level_text( 14, f'FPS: {clock.get_fps():.0f}', COLOR_BLUESKY,(10, WIN_HEIGHT - 30)) #show the current FPS
+            self.level_text( 14, f'Entidades: {len(self.entity_list)}', COLOR_BLUESKY,(10, WIN_HEIGHT - 45)) #show number of entities
             pygame.display.flip()
         pass
+
+    def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
+        Font = pygame.font.SysFont(name="bauhaus93", size=text_size) #cria a fonte
+        Surface = Font.render(text, True, text_color).convert_alpha() #renderiza o texto com a fonte, antialiasing e cor
+        Rect = Surface.get_rect(topleft = text_pos) #centra o retangulo do texto na posicao especificada
+        self.window.blit(source=Surface, dest=Rect) #blit padrao, ou seja, desenha o texto na janela

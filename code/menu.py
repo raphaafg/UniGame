@@ -17,7 +17,7 @@ class Menu:
     def __init__(self, window):
         self.window = window
         #para inserir a imagem do menu: carregue a imagem, desenha o retangulo e coloca a imagem no retangulo
-        self.surf = pygame.image.load('./asset/menuBg.png') #load the background image
+        self.surf = pygame.image.load('./asset/menuBg.png').convert_alpha() #load the background image
         self.rect = self.surf.get_rect(left=0, top=0)  #get the rectangle of the image setting the position (0,0 is default)
         self.clock = pygame.time.Clock()
 
