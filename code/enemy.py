@@ -1,15 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import pygame
-from code.const import ENTITY_SPEED, WIN_WIDTH
+from code.const import ENTITY_SHOT_DELAY, ENTITY_SPEED, WIN_WIDTH
+from code.enemyShot import EnemyShot
 from code.entity import Entity
 import random
 
 
 
 class Enemy(Entity):
-    def __init__(self, nome: str, position: tuple):
-        super().__init__(nome, position)
+    def __init__(self, name: str, position: tuple):
+        super().__init__(name, position)
+        self.shot_delay = ENTITY_SHOT_DELAY[self.name]
         self.spawn_time_ms = pygame.time.get_ticks() # Get the current time in milliseconds from spawn
 
 
@@ -26,3 +28,9 @@ class Enemy(Entity):
             else:
                 ##print(f'Enemy {self.name} destroyed)')
                 pass 
+
+    def shoot(self):
+        self.shot_delay -= 1
+        if self.shot_delay == 0:
+            self.shot_delay = ENTITY_SHOT_DELAY[self.name]
+            return EnemyShot(name=f"{self.name}Shot", position=(self.rect.centerx, self.rect.centery))

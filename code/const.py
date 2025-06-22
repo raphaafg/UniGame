@@ -19,9 +19,14 @@ ENTITY_SPEED = {
     'lvl1_2': 4,
     'lvl1_3': 5,
     'Player1_DLC':4,
-    'Player2_DLC':4,
+    'Player2_DLC':5,
     'Enemy1': 3,
     'Enemy2': 2,
+    'Player1_DLCShot': 7,
+    'Player2_DLCShot': 5,
+    'Enemy1Shot': 4,
+    'Enemy2Shot': 7,
+
 }
 ENEMY_SPAWN = pygame.USEREVENT + 1 
 ENTITY_HEALTH = {
@@ -30,15 +35,21 @@ ENTITY_HEALTH = {
     'lvl1_2': 999,
     'lvl1_3': 999,
     'Player1_DLC': 300,
-    'Player1Shot': 1,
+    'Player1_DLCShot': 1,
     'Player2_DLC': 300,
-    'Player2Shot': 1,
+    'Player2_DLCShot': 1,
     'Enemy1': 50,
     'Enemy2': 65,
-    'EnemyShot': 1,
+    'Enemy1Shot': 1,
+    'Enemy2Shot': 1,
 }
 
-
+ENTITY_SHOT_DELAY = {
+    'Player1_DLC': 20,
+    'Player2_DLC': 30,
+    'Enemy1': 100,
+    'Enemy2': 200,
+}
 
 
 #F
@@ -64,6 +75,7 @@ PLAYER_KEY_SHOOT = {'Player1_DLC': pygame.K_SPACE, 'Player2_DLC': pygame.K_g}
 
 #S
 SPAWN_TIME = 4500
+
 
 #W
 WIN_WIDTH = 800  # Width of the game window

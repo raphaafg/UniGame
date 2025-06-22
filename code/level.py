@@ -5,9 +5,11 @@ import random
 import sys
 import pygame
 from code.const import COLOR_BLUESKY, ENEMY_SPAWN, MENU_OPTION, SPAWN_TIME, WIN_HEIGHT
+from code.enemy import Enemy
 from code.entity import Entity
 from code.entityFactory import EntityFactory
 from code.entityMediator import EntityMediator
+from code.player import Player
 
 
 class Level:
@@ -35,6 +37,12 @@ class Level:
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)  # Draw each entity on the window
                 ent.move()
+                if isinstance(ent,(Player, Enemy)):
+                    shoot = ent.shoot()  # If the entity is a player or enemy, check if it can shoot
+                    if shoot is not None:
+                        self.entity_list.append(shoot) # Add the shot to the entity list if it exists
+                    
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
