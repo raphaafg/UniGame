@@ -1,16 +1,15 @@
 #code criado para centralizar as constantes do jogo - os números mágicos - usados para definir o tamanho da janela, cores, etc.
 #constantes devem ser escritas em letras maiúsculas
 #boas praticas: separar as constantes pelas iniciais
-
-
-
-#C
 import pygame
 
 
+#C
 COLOR_PURPLE = (187, 50, 214)  # RGB color for purple
 COLOR_BLUESKY = (167, 236, 255)  # RGB color for sky blue
 COLOR_BLUESPACE = (80, 50, 255)  # RGB color for yellow
+COLOR_ORANGEFIRE = (230, 165, 0)  # RGB color for orange fire
+COLOR_DARKGREEN = (0, 100, 0)  # RGB color for dark green
 
 #E
 ENTITY_SPEED = {
@@ -38,7 +37,7 @@ ENTITY_HEALTH = {
     'Player1_DLCShot': 1,
     'Player2_DLC': 300,
     'Player2_DLCShot': 1,
-    'Enemy1': 50,
+    'Enemy1': 40,
     'Enemy2': 65,
     'Enemy1Shot': 1,
     'Enemy2Shot': 1,
@@ -49,6 +48,36 @@ ENTITY_SHOT_DELAY = {
     'Player2_DLC': 30,
     'Enemy1': 100,
     'Enemy2': 200,
+}
+
+ENTITY_DAMAGE = {
+    'lvl1_0': 0,
+    'lvl1_1': 0,
+    'lvl1_2': 0,
+    'lvl1_3': 0,
+    'Player1_DLC': 5,
+    'Player2_DLC': 5,
+    'Enemy1': 10,
+    'Enemy2': 15,
+    'Player1_DLCShot': 20,
+    'Player2_DLCShot': 25,
+    'Enemy1Shot': 20,
+    'Enemy2Shot': 30,
+}
+
+ENTITY_SCORE = {
+    'lvl1_0': 0,
+    'lvl1_1': 0,
+    'lvl1_2': 0,
+    'lvl1_3': 0,
+    'Player1_DLC': 0,
+    'Player2_DLC': 0,
+    'Enemy1': 100,
+    'Enemy2': 150,
+    'Player1_DLCShot': 0,
+    'Player2_DLCShot': 0,
+    'Enemy1Shot': 0,
+    'Enemy2Shot': 0,
 }
 
 

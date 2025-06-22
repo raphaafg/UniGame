@@ -3,7 +3,7 @@
 #classe abstrata
 from abc import ABC, abstractmethod
 import pygame
-from code.const import ENTITY_HEALTH
+from code.const import ENTITY_DAMAGE, ENTITY_HEALTH, ENTITY_SCORE
 
 
 class Entity (ABC):
@@ -14,6 +14,9 @@ class Entity (ABC):
         self.rect = self.surf.get_rect(left=position[0], top=position[1])  # Get the rectangle of the image and set its position 0=x e y=1
         self.speed = 0
         self.health = ENTITY_HEALTH[self.name]
+        self.damage = ENTITY_DAMAGE[self.name]  # Damage is a dictionary that contains the damage of each entity, defined in const.py
+        self.score = ENTITY_SCORE[self.name] 
+        self.last_dmg = 'None' 
 
     @abstractmethod # To be implemented by subclasses, there is no default implementation
     def move(self, ):

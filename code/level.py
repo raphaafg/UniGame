@@ -4,7 +4,7 @@
 import random
 import sys
 import pygame
-from code.const import COLOR_BLUESKY, ENEMY_SPAWN, MENU_OPTION, SPAWN_TIME, WIN_HEIGHT
+from code.const import COLOR_BLUESKY, COLOR_DARKGREEN, COLOR_ORANGEFIRE, ENEMY_SPAWN, MENU_OPTION, SPAWN_TIME, WIN_HEIGHT
 from code.enemy import Enemy
 from code.entity import Entity
 from code.entityFactory import EntityFactory
@@ -26,11 +26,11 @@ class Level:
         pygame.time.set_timer(ENEMY_SPAWN, SPAWN_TIME)  # Set a timer to spawn enemies every 2 seconds
 
     def run(self, ):
-        pygame.mixer_music.load('./asset/Sound_lvl1.wav')  # Load the background music for level 1
-        pygame.mixer_music.play(loops=-1)
+        pygame.mixer.music.load('./asset/Sound_lvl1.wav')  # Load the background music for level 1
+        pygame.mixer.music.play(loops=-1)
         clock = pygame.time.Clock()  # Create a clock to control FPS
            
-
+        ##---------MAIN GAME LOOP---------##
         while True:
             clock.tick(60)
             self.window.fill((0,0,0)) #reset screen
@@ -41,8 +41,17 @@ class Level:
                     shoot = ent.shoot()  # If the entity is a player or enemy, check if it can shoot
                     if shoot is not None:
                         self.entity_list.append(shoot) # Add the shot to the entity list if it exists
-                    
+                
+                ##---------SHOW HEALTH OF PLAYERS---------##
+                if ent.name == 'Player1_DLC':
+                    self.level_text( 14, f'Player 1 -    Health: {ent.health}    Score: {ent.score}', COLOR_DARKGREEN,(10, 20))             
+                if ent.name == 'Player2_DLC':
+                    self.level_text( 14, f'Player 2 -    Health: {ent.health}    Score: {ent.score}', COLOR_ORANGEFIRE,(10, 35))
 
+
+                
+
+            ##---------CHECK FOR ALL EVENTS---------##
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -53,6 +62,10 @@ class Level:
                     choice = random.choice(['Enemy1', 'Enemy2'])  # Randomly choose an enemy type to spawn
                     self.entity_list.append(EntityFactory.get_entity(choice))  #add a random enemy to the entity list
 
+            
+           
+            
+            
             #printed text on the screen
             
             self.level_text( 14, f'{self.name} - Timeout: {self.timeout / 1000:.0f}s', COLOR_BLUESKY,(10, 5)) #show the level name and timeout
