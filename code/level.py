@@ -7,6 +7,7 @@ import pygame
 from code.const import COLOR_BLUESKY, ENEMY_SPAWN, MENU_OPTION, SPAWN_TIME, WIN_HEIGHT
 from code.entity import Entity
 from code.entityFactory import EntityFactory
+from code.entityMediator import EntityMediator
 
 
 class Level:
@@ -38,6 +39,7 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()  # Exit the game if the window is closed
+                    
                 ##---------SPAWN OF ENEMIES---------##
                 if event.type == ENEMY_SPAWN:
                     choice = random.choice(['Enemy1', 'Enemy2'])  # Randomly choose an enemy type to spawn
@@ -49,6 +51,11 @@ class Level:
             self.level_text( 14, f'FPS: {clock.get_fps():.0f}', COLOR_BLUESKY,(10, WIN_HEIGHT - 30)) #show the current FPS
             self.level_text( 14, f'Entidades: {len(self.entity_list)}', COLOR_BLUESKY,(10, WIN_HEIGHT - 45)) #show number of entities
             pygame.display.flip()
+
+
+            ##---------COLLISION AND HEALTH CHECK---------##
+            EntityMediator.verify_collision(entity_list=self.entity_list)  # Check for collisions between entities
+            EntityMediator.verify_health(entity_list=self.entity_list)
         pass
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):

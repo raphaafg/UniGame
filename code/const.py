@@ -24,6 +24,23 @@ ENTITY_SPEED = {
     'Enemy2': 2,
 }
 ENEMY_SPAWN = pygame.USEREVENT + 1 
+ENTITY_HEALTH = {
+    'lvl1_0': 999,
+    'lvl1_1': 999,
+    'lvl1_2': 999,
+    'lvl1_3': 999,
+    'Player1_DLC': 300,
+    'Player1Shot': 1,
+    'Player2_DLC': 300,
+    'Player2Shot': 1,
+    'Enemy1': 50,
+    'Enemy2': 65,
+    'EnemyShot': 1,
+}
+
+
+
+
 #F
 FONT_TITLE_SIZE = 60  # Font size for the menu text
 FONT_OPTION_SIZE = 18  # Font size for the menu options
@@ -46,7 +63,7 @@ PLAYER_KEY_RIGHT = {'Player1_DLC': pygame.K_RIGHT, 'Player2_DLC': pygame.K_d}
 PLAYER_KEY_SHOOT = {'Player1_DLC': pygame.K_SPACE, 'Player2_DLC': pygame.K_g}  
 
 #S
-SPAWN_TIME = 5500
+SPAWN_TIME = 4500
 
 #W
 WIN_WIDTH = 800  # Width of the game window

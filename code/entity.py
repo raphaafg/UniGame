@@ -3,6 +3,7 @@
 #classe abstrata
 from abc import ABC, abstractmethod
 import pygame
+from code.const import ENTITY_HEALTH
 
 
 class Entity (ABC):
@@ -12,6 +13,7 @@ class Entity (ABC):
         #convert_alpha: otmiza imagem para melhor desempenho, mantendo a transparência
         self.rect = self.surf.get_rect(left=position[0], top=position[1])  # Get the rectangle of the image and set its position 0=x e y=1
         self.speed = 0
+        self.health = ENTITY_HEALTH[self.name]
 
     @abstractmethod # To be implemented by subclasses, there is no default implementation
     def move(self, ):
