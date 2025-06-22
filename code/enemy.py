@@ -13,6 +13,8 @@ class Enemy(Entity):
         super().__init__(name, position)
         self.shot_delay = ENTITY_SHOT_DELAY[self.name]
         self.spawn_time_ms = pygame.time.get_ticks() # Get the current time in milliseconds from spawn
+        self.shot_sound = pygame.mixer.Sound('./asset/' + name + '.wav') # Load the shot sound for the player
+        self.shot_sound.set_volume(0.3)  # Set the volume for the shot sound
 
 
 
@@ -33,4 +35,5 @@ class Enemy(Entity):
         self.shot_delay -= 1
         if self.shot_delay == 0:
             self.shot_delay = ENTITY_SHOT_DELAY[self.name]
+            self.shot_sound.play()
             return EnemyShot(name=f"{self.name}Shot", position=(self.rect.centerx, self.rect.centery))
