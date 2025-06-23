@@ -17,9 +17,17 @@ class EntityFactory: #design pattern factory doesnt need a init
             #lvl1 factory
             case 'lvl1':                
                 list_bg = []
-                for i in range (4):
+                for i in range (4): # 4 backgrounds images for level 1
                     list_bg.append(Background(f'lvl1_{i}', (0,0)))
                     list_bg.append(Background(f'lvl1_{i}', (WIN_WIDTH,0)))
+                return list_bg
+            
+            #lvl2 factory
+            case 'lvl2':                
+                list_bg = []
+                for i in range (3): # 3 backgrounds images for level 2
+                    list_bg.append(Background(f'lvl2_{i}', (0,0)))
+                    list_bg.append(Background(f'lvl2_{i}', (WIN_WIDTH,0)))
                 return list_bg
             
             #Player1 factory
@@ -35,3 +43,6 @@ class EntityFactory: #design pattern factory doesnt need a init
             #Enemy2 factory
             case 'Enemy2':
                 return Enemy('Enemy2', (WIN_WIDTH + 15, random.randint(50, WIN_HEIGHT - 50)))
+            
+            
+            

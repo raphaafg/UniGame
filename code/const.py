@@ -17,6 +17,9 @@ ENTITY_SPEED = {
     'lvl1_1': 0,
     'lvl1_2': 4,
     'lvl1_3': 5,
+    'lvl2_0': 2,
+    'lvl2_1': 1,
+    'lvl2_2': 3,
     'Player1_DLC':4,
     'Player2_DLC':5,
     'Enemy1': 3,
@@ -28,11 +31,16 @@ ENTITY_SPEED = {
 
 }
 ENEMY_SPAWN = pygame.USEREVENT + 1 
+EVENT_TIMEOUT = pygame.USEREVENT + 2 #it has to be +2 because +1 is already used by ENEMY_SPAWN
+
 ENTITY_HEALTH = {
     'lvl1_0': 999,
     'lvl1_1': 999,
     'lvl1_2': 999,
     'lvl1_3': 999,
+    'lvl2_0': 999,
+    'lvl2_1': 999,
+    'lvl2_2': 999,
     'Player1_DLC': 300,
     'Player1_DLCShot': 1,
     'Player2_DLC': 300,
@@ -46,8 +54,8 @@ ENTITY_HEALTH = {
 ENTITY_SHOT_DELAY = {
     'Player1_DLC': 20,
     'Player2_DLC': 30,
-    'Enemy1': 100,
-    'Enemy2': 200,
+    'Enemy1': 90,
+    'Enemy2': 150,
 }
 
 ENTITY_DAMAGE = {
@@ -55,6 +63,9 @@ ENTITY_DAMAGE = {
     'lvl1_1': 0,
     'lvl1_2': 0,
     'lvl1_3': 0,
+    'lvl2_0': 0,
+    'lvl2_1': 0,
+    'lvl2_2': 0,
     'Player1_DLC': 5,
     'Player2_DLC': 5,
     'Enemy1': 10,
@@ -70,6 +81,9 @@ ENTITY_SCORE = {
     'lvl1_1': 0,
     'lvl1_2': 0,
     'lvl1_3': 0,
+    'lvl2_0': 0,
+    'lvl2_1': 0,
+    'lvl2_2': 0,
     'Player1_DLC': 0,
     'Player2_DLC': 0,
     'Enemy1': 100,
@@ -103,8 +117,9 @@ PLAYER_KEY_RIGHT = {'Player1_DLC': pygame.K_RIGHT, 'Player2_DLC': pygame.K_d}
 PLAYER_KEY_SHOOT = {'Player1_DLC': pygame.K_SPACE, 'Player2_DLC': pygame.K_g}  
 
 #S
-SPAWN_TIME = 4500
-
+SPAWN_TIME = 2000 #2s
+STEP_TIMEOUT = 100  #0.1s
+STAGE_TIMEOUT = 25000  #25s
 
 #W
 WIN_WIDTH = 800  # Width of the game window

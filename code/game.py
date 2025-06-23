@@ -18,14 +18,20 @@ class Game:
         pygame.mixer.init() # Initialize the mixer module for sound playback
         self.window = pygame.display.set_mode (size=(WIN_WIDTH,WIN_HEIGHT)) # Create a window with a size of 800x600 pixels -> size deve ser criada em tupla
 
-    def run(self, ):
+    def run(self,):
+        player_score = [0,0]
         while True: # Start an infinite loop
             menu = Menu(self.window)
             menu_return = menu.run() #execute the run method of the Menu class
 
             if menu_return in [MENU_OPTION[0], MENU_OPTION[1], MENU_OPTION[2]]: #if player selects to play 1p. 2p coop or 2p vs, starts the level 1
-                level = Level(self.window, 'Level 1', menu_return) #create a new Level object with the window and level name
-                level_return = level.run()
+                player_score = [0, 0] #[score player 1, score player 2]
+                level = Level(self.window, 'Level 1', menu_return, player_score) #create a new Level object with the window and level name
+                level_return = level.run(player_score)
+                if level_return:
+                    level = Level(self.window, 'Level 2', menu_return, player_score) #create a new Level object with the window and level name (the second level)
+                    level_return = level.run(player_score)
+
                         
             elif menu_return == MENU_OPTION[5]:
                 pygame.quit() #quit the game closing the window
