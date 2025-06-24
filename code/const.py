@@ -99,7 +99,8 @@ ENTITY_SCORE = {
 FONT_TITLE_SIZE = 60  # Font size for the menu text
 FONT_OPTION_SIZE = 18  # Font size for the menu options
 
-
+#
+HIT_COOLDOWN = 40 
 
 #M
 MENU_OPTION = ( 'NEW GAME - 1P > ARCADE',
@@ -117,27 +118,27 @@ PLAYER_KEY_RIGHT = {'Player1_DLC': pygame.K_RIGHT, 'Player2_DLC': pygame.K_d}
 PLAYER_KEY_SHOOT = {'Player1_DLC': pygame.K_SPACE, 'Player2_DLC': pygame.K_g}  
 
 #S
-SPAWN_TIME = 1800 #1.8s
+SPAWN_TIME = 1300 #1.8s
 STEP_TIMEOUT = 100  #0.1s
-STAGE_TIMEOUT = 5000  #25s
+STAGE_TIMEOUT = 25000  #25s
 
 #W
 WIN_WIDTH = 800  # Width of the game window
 WIN_HEIGHT = 500  # Height of the game window
 
 WIN_SCORE_POS = { 'Title': (WIN_WIDTH/2, 50),
-                 'EnterName': (WIN_WIDTH/2, 80),
-                 'Label': (WIN_WIDTH/2, 90),
-                 'Name': (WIN_WIDTH/2, 50),
-                 0: (WIN_WIDTH/2, 110),
-                 1: (WIN_WIDTH/2, 130),
-                 2: (WIN_WIDTH/2, 150),
-                 3: (WIN_WIDTH/2, 170),
-                 4: (WIN_WIDTH/2, 190),
-                 5: (WIN_WIDTH/2, 210),
-                 6: (WIN_WIDTH/2, 230),
-                 7: (WIN_WIDTH/2, 250),
-                 8: (WIN_WIDTH/2, 270),
-                 9: (WIN_WIDTH/2, 290),            
+                 'EnterName': (WIN_WIDTH/2, 90),
+                 'Label': (WIN_WIDTH/2, 100),
+                 'Name': (WIN_WIDTH/2, 110),
+                 0: (WIN_WIDTH/2, 130), #0 a 9 referente ao index do lista ordenada
+                 1: (WIN_WIDTH/2, 150),
+                 2: (WIN_WIDTH/2, 170),
+                 3: (WIN_WIDTH/2, 190),
+                 4: (WIN_WIDTH/2, 210),
+                 5: (WIN_WIDTH/2, 230),
+                 6: (WIN_WIDTH/2, 250),
+                 7: (WIN_WIDTH/2, 270),
+                 8: (WIN_WIDTH/2, 290),
+                 9: (WIN_WIDTH/2, 310),            
 
 }

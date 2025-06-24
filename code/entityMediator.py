@@ -1,5 +1,5 @@
 import pygame
-from code.const import WIN_WIDTH
+from code.const import HIT_COOLDOWN, WIN_WIDTH
 from code.enemy import Enemy
 from code.enemyShot import EnemyShot
 from code.entity import Entity
@@ -25,6 +25,7 @@ class EntityMediator: #design pattern factory doesnt need a init
             
     @staticmethod
     def __verify_collision_entity(ent1, ent2):
+        hit_cooldown = HIT_COOLDOWN
         # Check if the entities are of types that can interact with each other
         valid_interaction = False #flag to check if the collision is valid
         if isinstance(ent1, Enemy) and isinstance(ent2, PlayerShot):
@@ -35,6 +36,18 @@ class EntityMediator: #design pattern factory doesnt need a init
             valid_interaction = True
         elif isinstance(ent1, Player) and isinstance(ent2, EnemyShot):
             valid_interaction = True
+        elif isinstance(ent1, Player) and isinstance(ent2, Enemy):
+            hit_cooldown -= 1
+            if hit_cooldown == 0:
+                hit_cooldown == HIT_COOLDOWN
+                valid_interaction = True
+        elif isinstance(ent1, Enemy) and isinstance(ent2, Player):
+            hit_cooldown -= 1
+            if hit_cooldown == 0:
+                hit_cooldown == HIT_COOLDOWN
+                valid_interaction = True
+        
+
         
         # Check if the entities are colliding
         if valid_interaction: #== True:
