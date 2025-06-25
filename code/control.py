@@ -16,8 +16,9 @@ class Control:
     
 
     def run(self):
-        pygame.mixer_music.load('./asset/Sound_control.wav')
-        pygame.mixer_music.play(loops=-1) # Play the background music in a loop 
+        pygame.mixer.music.load('./asset/Sound_control.wav')
+        pygame.mixer.music.play(loops=-1) # Play the background music in a loop
+        pygame.mixer.music.set_volume(0.4)
         self.window.blit(source=self.surf, dest=self.rect)
         while True:
             self.control_text(FONT_TITLE_SIZE, "CONTROL", COLOR_PURPLE, WIN_SCORE_POS['Title'] )

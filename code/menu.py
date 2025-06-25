@@ -29,7 +29,7 @@ class Menu:
         self.window.blit(source=Surface, dest=Rect) #blit padrao, ou seja, desenha o texto na janela
 
 
-    def run(self, ):
+    def run(self):
         menu_option = 0
         pygame.mixer_music.load('./asset/Sound_menu.wav') # Load the background music for the menu
         pygame.mixer_music.play(loops=-1) # Play the background music in a loop (-1 means loop indefinitely)

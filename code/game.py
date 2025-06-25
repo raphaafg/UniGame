@@ -49,7 +49,8 @@ class Game:
                 pygame.quit() #quit the game closing the window
                 quit()
             else:
-                pass
+                pygame.quit() #quit the game closing the window
+                quit()
 
             
 
